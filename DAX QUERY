@@ -1,0 +1,27 @@
+Complaint Year = YEAR('complaints_Full Data SET A csv'[Date Received].[Date])
+
+Timely Complaints = 
+CALCULATE(
+    [Total Complaints],
+    'complaints_Full Data SET A csv'[Timely response?]= "Yes")
+
+Timely Response % = 
+DIVIDE(
+    [Timely Complaints],
+    [Total Complaints],0)
+
+Total Complaints = COUNT('complaints_Full Data SET A csv'[Complaint ID])
+
+Total Issues = DISTINCTCOUNT('complaints_Full Data SET A csv'[Issue])
+
+Total Products = DISTINCTCOUNT('complaints_Full Data SET A csv'[Product])
+
+Untimely Complaints = 
+CALCULATE(
+    [Total Complaints],
+    'complaints_Full Data SET A csv'[Timely response?]= "No"
+)
+    
+
+
+
